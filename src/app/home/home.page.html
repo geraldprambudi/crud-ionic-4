@@ -1,14 +1,29 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Aplikasi Catatan
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+<ion-content padding>
+  <ion-item>
+      <ion-input type="text" placeholder="Enter task" [(ngModel)]="taskName"></ion-input>
+      <div class="item-note" item-end>
+        <ion-button (click)="addTask()"><ion-icon name="add">Add task</ion-icon></ion-button>
+      </div>
+  </ion-item>
+  
+    <ion-list>
+      <ion-item *ngFor="let todo of taskList; let i = index">
+        {{todo}}
+        <ion-col class="ion-float-right">
+          <div class="item-note ion-float-right" item-end>
+            <ion-button clear (click) = "updateTask(i)"><ion-icon name="create"></ion-icon></ion-button>
+            <ion-button clear (click) = "deleteTask(i)"><ion-icon name="trash"></ion-icon></ion-button>
+          </div>
+        </ion-col>
+      </ion-item>
+    </ion-list>
+  
 </ion-content>
